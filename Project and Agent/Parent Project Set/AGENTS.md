@@ -30,6 +30,8 @@
 ```text
 AGENTS.md
 README.md
+docs/agent/workflows.md
+docs/agent/memory-and-decisions.md
 .learnings/LEARNINGS.md
 .learnings/ERRORS.md
 ```
@@ -49,6 +51,10 @@ README.md
 /
 ├── AGENTS.md
 ├── README.md
+├── docs/
+│   └── agent/
+│       ├── workflows.md
+│       └── memory-and-decisions.md
 └── .learnings/
     ├── LEARNINGS.md
     └── ERRORS.md

@@ -55,17 +55,17 @@
 ```text
 /
 ├── AGENTS.md
+├── README.md
 ├── docs/
 │   └── agent/
-│       ├── INDEX.md
-│       ├── product-context.md
-│       └── protocols/
+│       ├── workflows.md
+│       └── memory-and-decisions.md
 └── .learnings/
     ├── LEARNINGS.md
     └── ERRORS.md
 ```
 
-项目级 `AGENTS.md` 应保持短而清楚：项目定位、默认读序、按需资料入口、暂停条件、验证要求。
+项目级 `AGENTS.md` 应保持短而清楚：项目定位、默认读序、按需资料入口、分支规则调用、暂停条件、验证要求。
 
 ## 3.5 技能与插件调用机制
 

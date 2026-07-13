@@ -49,6 +49,8 @@ cp -R "Project and Agent/Child Project Template/." ~/.codex/agent-templates/proj
 ```text
 ~/.codex/agent-templates/project-agent/AGENTS.md
 ~/.codex/agent-templates/project-agent/README.md
+~/.codex/agent-templates/project-agent/docs/agent/workflows.md
+~/.codex/agent-templates/project-agent/docs/agent/memory-and-decisions.md
 ~/.codex/agent-templates/project-agent/.learnings/LEARNINGS.md
 ~/.codex/agent-templates/project-agent/.learnings/ERRORS.md
 ```
@@ -76,6 +78,8 @@ cp -R ~/.codex/agent-templates/project-agent/. "/path/to/new-project/"
 ```text
 AGENTS.md
 README.md
+docs/agent/workflows.md
+docs/agent/memory-and-decisions.md
 .learnings/LEARNINGS.md
 .learnings/ERRORS.md
 ```
@@ -94,6 +98,8 @@ test -f ~/.codex/AGENTS.md && echo "Global AGENTS.md OK"
 
 ```bash
 test -f ~/.codex/agent-templates/project-agent/AGENTS.md && echo "Project template AGENTS.md OK"
+test -f ~/.codex/agent-templates/project-agent/docs/agent/workflows.md && echo "Project workflows OK"
+test -f ~/.codex/agent-templates/project-agent/docs/agent/memory-and-decisions.md && echo "Project memory rules OK"
 test -f ~/.codex/agent-templates/project-agent/.learnings/LEARNINGS.md && echo "Project learnings OK"
 test -f ~/.codex/agent-templates/project-agent/.learnings/ERRORS.md && echo "Project errors OK"
 ```

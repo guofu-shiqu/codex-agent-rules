@@ -36,6 +36,10 @@ Project and Agent/
 └── Child Project Template/
     ├── AGENTS.md
     ├── README.md
+    ├── docs/
+    │   └── agent/
+    │       ├── workflows.md
+    │       └── memory-and-decisions.md
     └── .learnings/
         ├── LEARNINGS.md
         └── ERRORS.md
@@ -49,6 +53,7 @@ Project and Agent/
 - `Codex Installation Guide.md`：安装步骤。
 - `AGENTS.md`：全局 Agent 规则，安装到 `~/.codex/AGENTS.md`。
 - `Project and Agent/Child Project Template/`：正式新项目模板，安装到 `~/.codex/agent-templates/project-agent/`。
+- `Project and Agent/Child Project Template/docs/agent/`：项目级分支规则，随模板复制，按任务命中读取。
 
 可选但保留：
 
@@ -85,6 +90,8 @@ Project and Agent/
 ```text
 AGENTS.md
 README.md
+docs/agent/workflows.md
+docs/agent/memory-and-decisions.md
 .learnings/LEARNINGS.md
 .learnings/ERRORS.md
 ```
