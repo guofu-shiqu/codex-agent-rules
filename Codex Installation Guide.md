@@ -2,6 +2,12 @@
 
 这份指南用于把本规则包安装到一台已经可以使用 Codex 的电脑上。
 
+安装前可在规则包根目录运行基础验证：
+
+```bash
+./scripts/verify-agent-rules.sh
+```
+
 ## 1. 推荐方式：交给 Codex
 
 在 Codex 中打开本规则包文件夹，然后发送：
@@ -102,6 +108,12 @@ test -f ~/.codex/agent-templates/project-agent/docs/agent/workflows.md && echo "
 test -f ~/.codex/agent-templates/project-agent/docs/agent/memory-and-decisions.md && echo "Project memory rules OK"
 test -f ~/.codex/agent-templates/project-agent/.learnings/LEARNINGS.md && echo "Project learnings OK"
 test -f ~/.codex/agent-templates/project-agent/.learnings/ERRORS.md && echo "Project errors OK"
+```
+
+如果你是在维护这套规则包本身，修改全局 Agent、项目集 Agent、项目级模板或测试用例后，再运行：
+
+```bash
+./scripts/verify-agent-rules.sh
 ```
 
 ## 5. 使用规则

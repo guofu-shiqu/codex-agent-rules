@@ -72,6 +72,8 @@ docs/final-report.md
 
 这些文件只在任务命中时创建，并在回复中说明触发原因。
 
+任务触发型文件只在命中时创建，不随新项目模板一次性生成。
+
 ## 4. 任务触发型文件规则
 
 - `docs/implementation-plan.md`：当任务涉及多个文件、业务逻辑、数据模型、接口、权限、状态机或核心流程时创建。
@@ -123,4 +125,5 @@ docs/final-report.md
 - 已复制到具体项目的 `AGENTS.md` 不强制同步模板，除非用户明确要求升级。
 - 若发现某个项目形成稳定规则，写入该项目 `.learnings/` 或项目 `AGENTS.md`。
 - 若发现跨项目稳定规则，再考虑更新全局 `/Users/guofu/.codex/AGENTS.md`。
+- 修改全局、项目集或项目级 Agent 模板后，应在规则包仓库运行 `./scripts/verify-agent-rules.sh`。
 - 不保留已停用协作机制的说明。

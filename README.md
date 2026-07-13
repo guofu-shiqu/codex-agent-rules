@@ -30,6 +30,11 @@
 README.md
 Codex Installation Guide.md
 AGENTS.md
+scripts/
+└── verify-agent-rules.sh
+tests/
+├── README.md
+└── cases/
 Project and Agent/
 ├── Parent Project Set/
 │   └── AGENTS.md
@@ -52,6 +57,8 @@ Project and Agent/
 - `README.md`：给人和 Codex 的入口说明。
 - `Codex Installation Guide.md`：安装步骤。
 - `AGENTS.md`：全局 Agent 规则，安装到 `~/.codex/AGENTS.md`。
+- `scripts/verify-agent-rules.sh`：规则包基础验证脚本。
+- `tests/`：规则包测试用例。
 - `Project and Agent/Child Project Template/`：正式新项目模板，安装到 `~/.codex/agent-templates/project-agent/`。
 - `Project and Agent/Child Project Template/docs/agent/`：项目级分支规则，随模板复制，按任务命中读取。
 
@@ -98,7 +105,22 @@ docs/agent/memory-and-decisions.md
 
 临时对话、一次性草稿、短期试验目录，不需要创建项目级 `AGENTS.md`。
 
-## 6. 适合谁使用
+## 6. 验证规则包
+
+修改全局 Agent、项目集 Agent、项目级模板或测试用例后，在仓库根目录运行：
+
+```bash
+./scripts/verify-agent-rules.sh
+```
+
+这会验证：
+
+- 规则包结构完整。
+- 项目级主 `AGENTS.md` 能路由到 `docs/agent/`。
+- 主动沉淀和暂停沉淀规则存在。
+- 新项目模板复制后能形成完整项目级 Agent 骨架。
+
+## 7. 适合谁使用
 
 适合：
 
@@ -112,6 +134,6 @@ docs/agent/memory-and-decisions.md
 - 不希望 Codex 读取本地项目规则。
 - 没有持续项目沉淀需求的场景。
 
-## 7. 许可
+## 8. 许可
 
 本仓库使用 MIT License。
