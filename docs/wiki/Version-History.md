@@ -2,6 +2,29 @@
 
 本页记录正式 GitHub Release 版本。
 
+## v0.2.3 - README Visual Storytelling
+
+Release：
+
+<https://github.com/guofu-shiqu/codex-agent-rules/releases/tag/v0.2.3>
+
+对应提交：
+
+以 Release 页面为准。
+
+### 主要更新
+
+- 为 README 增加 5 张 GPT-image-2 生成的视觉说明图。
+- 用视觉叙事解释规则失控、经验沉淀、三层架构、GPT-5.6 适配和 Skill 边界。
+- 重排 README，让视觉说明先于安装步骤出现。
+- 同步更新验证脚本，检查 README 图片资产和引用。
+
+### 验证结果
+
+```text
+以 Release 页面为准。
+```
+
 ## v0.2.2 - README GPT-5.6 and Superpowers Clarity
 
 Release：

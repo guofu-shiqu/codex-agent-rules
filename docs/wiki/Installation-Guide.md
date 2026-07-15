@@ -7,7 +7,7 @@
 推荐安装正式 Release 版本，避免团队成员安装到不同提交。
 
 ```bash
-git clone --branch v0.2.2 https://github.com/guofu-shiqu/codex-agent-rules.git
+git clone --branch v0.2.3 https://github.com/guofu-shiqu/codex-agent-rules.git
 ```
 
 ## 2. 安装全局 AGENTS.md
@@ -56,5 +56,5 @@ git describe --tags --always
 当前正式版本应为：
 
 ```text
-v0.2.2
+v0.2.3
 ```

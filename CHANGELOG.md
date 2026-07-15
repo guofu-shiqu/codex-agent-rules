@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-07-16 README Visual Storytelling
+
+### Updated
+
+- Added five GPT-image-2 generated README visuals:
+  - rules chaos;
+  - experience capture;
+  - three-layer Agent architecture;
+  - GPT-5.6 adaptation;
+  - Skill boundary and release loop.
+- Reworked the README layout into a visual narrative before the installation steps.
+- Updated release-based install guidance to `v0.2.3`.
+
 ## 2026-07-16 README GPT-5.6 and Superpowers Clarity
 
 ### Updated

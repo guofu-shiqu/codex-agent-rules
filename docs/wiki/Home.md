@@ -6,10 +6,10 @@
 
 ## 当前版本
 
-- 当前正式版本：`v0.2.2`
-- Release：<https://github.com/guofu-shiqu/codex-agent-rules/releases/tag/v0.2.2>
+- 当前正式版本：`v0.2.3`
+- Release：<https://github.com/guofu-shiqu/codex-agent-rules/releases/tag/v0.2.3>
 - 对应提交：以 Release 页面为准。
-- 验证结果：`91 passed, 0 failed`
+- 验证结果：`116 passed, 0 failed`
 
 ## 当前设计重点
 
@@ -17,6 +17,7 @@
 - 已优化 Superpowers / Skill 的触发逻辑：显式点名必须使用，隐式调用保持克制，不因极弱关联触发重型流程 Skill。
 - Skill 与 Superpowers 不扩大用户授权，不绕过沙箱、审批、外部写入、线上变更、推送或 PR 边界。
 - 规则包配套验证脚本、GitHub Release 和 Wiki，方便团队确认当前安装版本与更新内容。
+- README 已加入 5 张 GPT-image-2 生成的视觉说明图，用于解释痛点、经验沉淀、分层架构、GPT-5.6 适配和 Skill 边界。
 
 ## 主要页面
 
