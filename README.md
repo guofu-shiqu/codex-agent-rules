@@ -24,6 +24,12 @@
 安装后请告诉我全局 AGENTS.md、项目级模板和验证结果分别在哪里。
 ```
 
+当前推荐安装正式 Release 版本：
+
+```bash
+git clone --branch v0.2.1 https://github.com/guofu-shiqu/codex-agent-rules.git
+```
+
 ## 2. 文件结构
 
 ```text
@@ -31,6 +37,8 @@ README.md
 Codex Installation Guide.md
 CHANGELOG.md
 AGENTS.md
+docs/
+└── wiki/
 scripts/
 └── verify-agent-rules.sh
 tests/
@@ -59,6 +67,7 @@ Project and Agent/
 - `Codex Installation Guide.md`：安装步骤。
 - `CHANGELOG.md`：规则包更新日志。
 - `AGENTS.md`：全局 Agent 规则，安装到 `~/.codex/AGENTS.md`。
+- `docs/wiki/`：GitHub Wiki 页面源文件。GitHub Wiki 未初始化时，可先从这里阅读与同步。
 - `scripts/verify-agent-rules.sh`：规则包基础验证脚本。
 - `tests/`：规则包测试用例。
 - `Project and Agent/Child Project Template/`：正式新项目模板，安装到 `~/.codex/agent-templates/project-agent/`。
@@ -122,7 +131,13 @@ docs/agent/memory-and-decisions.md
 - 主动沉淀和暂停沉淀规则存在。
 - 新项目模板复制后能形成完整项目级 Agent 骨架。
 
-## 7. 适合谁使用
+## 7. 版本与 Wiki
+
+- 正式安装版本以 GitHub Releases 为准：<https://github.com/guofu-shiqu/codex-agent-rules/releases>
+- 团队阅读文档优先看 GitHub Wiki；如果 GitHub Wiki 尚未初始化，先看仓库内 `docs/wiki/`。
+- 每次对外发布安装版本时，应创建 GitHub Release，并同步更新 `CHANGELOG.md` 和 `docs/wiki/Version-History.md`。
+
+## 8. 适合谁使用
 
 适合：
 
@@ -136,6 +151,6 @@ docs/agent/memory-and-decisions.md
 - 不希望 Codex 读取本地项目规则。
 - 没有持续项目沉淀需求的场景。
 
-## 8. 许可
+## 9. 许可
 
 本仓库使用 MIT License。

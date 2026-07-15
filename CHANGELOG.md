@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-07-16 Release and Wiki Documentation
+
+### Updated
+
+- Created GitHub Release `v0.2.0` for the GPT-5.6 Agent rule refinement.
+- Added Wiki source pages under `docs/wiki/`:
+  - `Home.md`
+  - `Installation-Guide.md`
+  - `Agent-Rule-Architecture.md`
+  - `Version-History.md`
+  - `Project-Workflow.md`
+  - `Update-and-Verification.md`
+- Updated `README.md` with Release-based installation guidance and Wiki source location.
+
+### Note
+
+- GitHub reports Wiki as enabled, but the `.wiki.git` remote is not yet available for CLI push. Until the first GitHub Wiki page is initialized through the GitHub web UI, `docs/wiki/` is the maintained source for the Wiki content.
+
 ## 2026-07-16 Superpowers Skill Boundary Review
 
 ### Updated
