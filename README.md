@@ -29,6 +29,7 @@
 ```text
 README.md
 Codex Installation Guide.md
+CHANGELOG.md
 AGENTS.md
 scripts/
 └── verify-agent-rules.sh
@@ -56,6 +57,7 @@ Project and Agent/
 
 - `README.md`：给人和 Codex 的入口说明。
 - `Codex Installation Guide.md`：安装步骤。
+- `CHANGELOG.md`：规则包更新日志。
 - `AGENTS.md`：全局 Agent 规则，安装到 `~/.codex/AGENTS.md`。
 - `scripts/verify-agent-rules.sh`：规则包基础验证脚本。
 - `tests/`：规则包测试用例。

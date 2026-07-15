@@ -23,3 +23,52 @@
 ```bash
 # 待补充
 ```
+
+## 推荐项目文档结构
+
+推荐结构：
+
+```text
+/
+├── AGENTS.md
+├── README.md
+├── docs/
+│   ├── agent/
+│   │   ├── workflows.md
+│   │   └── memory-and-decisions.md
+│   ├── implementation-plan.md
+│   ├── implementation-notes.md
+│   ├── unknowns-log.md
+│   ├── decision-log.md
+│   └── final-report.md
+└── .learnings/
+    ├── LEARNINGS.md
+    └── ERRORS.md
+```
+
+不强制每个项目一次性建齐。`docs/agent/` 和 `.learnings/` 随模板创建；其他任务触发型文件需要时再创建。
+
+## 本文件维护规则
+
+项目 `AGENTS.md` 优先保持短入口和清楚路由。
+
+适合写在项目 `AGENTS.md` 里的内容：
+
+- 项目定位。
+- 权威资料入口。
+- 项目特有约束。
+- 分支规则调用条件。
+- 常用验证命令。
+- 项目专属输出风格。
+
+不适合写在项目 `AGENTS.md` 里的内容：
+
+- 大段需求正文。
+- 大段设计稿说明。
+- 大段数据字典。
+- 一次性任务计划。
+- 频繁变化的中间结论。
+- 复杂工作流全文。
+- 沉淀和决策机制细则。
+
+这些内容应放在 `docs/`、`docs/agent/` 或 `.learnings/`，并在项目 `AGENTS.md` 中给出清楚入口。
