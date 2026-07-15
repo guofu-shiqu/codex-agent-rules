@@ -14,6 +14,13 @@
 
 这份仓库保留了 guofu 当前使用的规则口径。团队或个人使用时，可以把其中的用户名、路径、输出风格和项目集规则替换成自己的版本。
 
+当前版本的设计重点：
+
+- 已按 GPT-5.6 的提示词特性做过适配：强调 outcome-first、执行授权、证据边界、停止条件和最小必要上下文。
+- 已优化 Superpowers / Skill 的触发逻辑：显式点名必须使用，隐式调用保持克制，不因极弱关联触发重型流程 Skill。
+- Skill 与 Superpowers 不扩大用户授权，不绕过沙箱、审批、外部写入、线上变更、推送或 PR 边界。
+- 规则包配套验证脚本、GitHub Release 和 Wiki，方便团队确认当前安装版本与更新内容。
+
 ## 1. 最快使用方式
 
 克隆或下载本仓库后，把整个文件夹交给 Codex，并发送：
@@ -27,7 +34,7 @@
 当前推荐安装正式 Release 版本：
 
 ```bash
-git clone --branch v0.2.1 https://github.com/guofu-shiqu/codex-agent-rules.git
+git clone --branch v0.2.2 https://github.com/guofu-shiqu/codex-agent-rules.git
 ```
 
 ## 2. 文件结构

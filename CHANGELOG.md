@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-07-16 README GPT-5.6 and Superpowers Clarity
+
+### Updated
+
+- Added a README summary that states the package is adapted for GPT-5.6 prompting behavior.
+- Added a README summary of Superpowers / Skill trigger boundary optimization.
+- Updated release-based install guidance to `v0.2.2`.
+
 ## 2026-07-16 Release and Wiki Documentation
 
 ### Updated

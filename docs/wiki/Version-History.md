@@ -2,6 +2,28 @@
 
 本页记录正式 GitHub Release 版本。
 
+## v0.2.2 - README GPT-5.6 and Superpowers Clarity
+
+Release：
+
+<https://github.com/guofu-shiqu/codex-agent-rules/releases/tag/v0.2.2>
+
+对应提交：
+
+以 Release 页面为准。
+
+### 主要更新
+
+- 在 README 顶部补充当前版本已经兼容 GPT-5.6 提示词特性的说明。
+- 在 README 顶部补充 Superpowers / Skill 触发逻辑优化说明。
+- 同步更新 Wiki 首页、安装指南和验证脚本中的当前版本。
+
+### 验证结果
+
+```text
+以 Release 页面为准。
+```
+
 ## v0.2.1 - Release and Wiki Documentation
 
 Release：
