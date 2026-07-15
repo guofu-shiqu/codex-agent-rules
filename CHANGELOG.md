@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-07-16 Superpowers Skill Boundary Review
+
+### Updated
+
+- Added global Skill/Superpowers boundary rules:
+  - implicit skill invocation should be direct and useful, not triggered by weak associations;
+  - process skills can guide implementation skills, but equivalent workflows should not repeat;
+  - skills apply to the current task only and should not be carried across tasks by inertia;
+  - Skill and Superpowers do not expand user authorization or bypass sandbox, approval, external-write, destructive-action, deployment, push, or PR boundaries;
+  - skill conflicts must be stated and resolved by higher-priority rules and the smallest safe path.
+- Added `tests/cases/superpowers-skill-boundaries.md`.
+- Extended `scripts/verify-agent-rules.sh` with Skill/Superpowers boundary assertions.
+
 ## 2026-07-16 GPT-5.6 Agent Rule Refinement
 
 ### Updated
