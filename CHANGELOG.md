@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-07-18 Optional Parent Workspace Templates
+
+### Updated
+
+- Clarified that parent workspace templates are optional enhancements, not default installation files.
+- Clarified that ordinary project-list directories should stay clean unless the user explicitly wants a parent `AGENTS.md`.
+- Updated README, installation guide and Wiki sources to recommend project-level `AGENTS.md` as the default path.
+- Updated release-based install guidance to `v0.2.5`.
+
+### Fixed
+
+- Removed the implication that independent project parent rules should be installed by default.
+
 ## 2026-07-17 Independent Project Parent Template
 
 ### Added

@@ -19,7 +19,7 @@
 1. 先备份我本机已有的 ~/.codex/AGENTS.md。
 2. 把根目录 AGENTS.md 安装为 ~/.codex/AGENTS.md。
 3. 把 Project and Agent/Child Project Template/ 安装为 ~/.codex/agent-templates/project-agent/。
-4. 如果我有父级项目目录，请询问我路径和类型，再把对应父级模板放到父级项目目录的 AGENTS.md。
+4. 如果我明确要求安装父级项目目录规则，请询问我路径和类型，再把对应父级模板放到父级项目目录的 AGENTS.md；否则不要默认安装父级 AGENTS.md。
    - 项目集：Project and Agent/Parent Project Set/AGENTS.md
    - 独立项目：Project and Agent/Parent Independent Projects/AGENTS.md
 5. 安装后帮我验证文件是否存在，并告诉我后续创建正式项目时应该复制哪个模板目录。
@@ -63,21 +63,23 @@ cp -R "Project and Agent/Child Project Template/." ~/.codex/agent-templates/proj
 ~/.codex/agent-templates/project-agent/.learnings/ERRORS.md
 ```
 
-### 2.4 安装父级目录规则（可选）
+### 2.4 安装父级目录规则（可选，默认跳过）
 
-如果你有类似“项目集”的父级目录，可以复制：
+父级目录规则不是必备文件。只有当你明确希望某个父级目录统一管理子项目创建规则时，才安装这一层。
+
+如果你有类似“项目集”的父级目录，并希望它统一管理多个子项目，可以复制：
 
 ```bash
 cp "Project and Agent/Parent Project Set/AGENTS.md" "/path/to/your/project-set/AGENTS.md"
 ```
 
-如果你有类似“独立项目”的父级目录，可以复制：
+如果你有类似“独立项目”的父级目录，并明确希望父级目录也有统一规则，可以复制：
 
 ```bash
 cp "Project and Agent/Parent Independent Projects/AGENTS.md" "/path/to/your/independent-projects/AGENTS.md"
 ```
 
-如果没有父级项目目录，可以跳过。
+如果父级目录主要只是 Finder 里的项目列表，推荐跳过，不要默认放置父级 `AGENTS.md`。
 
 ## 3. 创建正式新项目
 
@@ -101,6 +103,8 @@ docs/agent/memory-and-decisions.md
 然后根据项目实际情况修改新项目自己的 `AGENTS.md` 和 `README.md`。
 
 如果正式项目已经是空目录，但还没有 `AGENTS.md`，应先补齐上述项目级骨架，再继续实施具体任务。仅把目录加入 Codex trusted project 不等于项目初始化完成。
+
+没有父级 `AGENTS.md` 时，也可以直接在具体项目根目录补齐项目级骨架。
 
 ## 4. 验证安装
 
@@ -130,7 +134,7 @@ test -f ~/.codex/agent-templates/project-agent/.learnings/ERRORS.md && echo "Pro
 
 - 全局规则放在 `~/.codex/AGENTS.md`。
 - 新项目模板源头放在 `~/.codex/agent-templates/project-agent/`。
-- 父级项目规则可放在长期父级目录的 `AGENTS.md`，例如项目集或独立项目目录。
+- 父级项目规则是可选增强，可放在长期父级目录的 `AGENTS.md`，例如项目集目录；普通项目列表目录默认不需要。
 - 具体项目只使用复制后的项目根目录 `AGENTS.md`。
 - 不要用软链接连接模板和项目，避免项目之间互相污染。
 - 临时对话、一次性草稿、短期试验目录，不需要创建项目级 `AGENTS.md`。

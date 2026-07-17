@@ -25,9 +25,11 @@
 - 项目特有约束。
 - 项目常用验证命令。
 
-## 3. 父级目录可以先安装父级 AGENTS.md
+## 3. 父级目录可以选择安装父级 AGENTS.md
 
-如果正式项目集中放在一个父级目录下，建议先复制对应父级模板：
+父级 `AGENTS.md` 是可选增强，不是必备文件。
+
+如果正式项目集中放在一个父级目录下，且你明确希望父级目录统一管理子项目创建规则，可以复制对应父级模板：
 
 - 项目集：`Project and Agent/Parent Project Set/AGENTS.md`
 - 独立项目：`Project and Agent/Parent Independent Projects/AGENTS.md`
@@ -39,6 +41,8 @@
 - 但子项目仍是空目录，缺少项目级 `AGENTS.md`。
 
 这种情况下，应先补齐项目级骨架，再继续执行具体任务。
+
+如果父级目录主要是 Finder 里的项目列表，推荐不放父级 `AGENTS.md`，而是在每个具体项目根目录维护自己的 `AGENTS.md`。
 
 ## 4. 项目经验沉淀
 

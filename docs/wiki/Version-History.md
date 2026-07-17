@@ -2,6 +2,29 @@
 
 本页记录正式 GitHub Release 版本。
 
+## v0.2.5 - Optional Parent Workspace Templates
+
+Release：
+
+<https://github.com/guofu-shiqu/codex-agent-rules/releases/tag/v0.2.5>
+
+对应提交：
+
+以 Release 页面为准。
+
+### 主要更新
+
+- 明确父级目录模板是可选增强，不是默认安装项。
+- 明确普通项目列表目录应优先保持干净，不建议默认放置父级 `AGENTS.md`。
+- 保留 `Parent Independent Projects` 作为可选模板样例，但推荐具体项目根目录维护自己的 `AGENTS.md`。
+- 更新 README、安装指南、Wiki 与验证脚本中的版本和断言。
+
+### 验证结果
+
+```text
+以 Release 页面为准。
+```
+
 ## v0.2.4 - Independent Project Parent Template
 
 Release：

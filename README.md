@@ -16,14 +16,14 @@
 
 这份仓库保留了 guofu 当前使用的规则口径。团队或个人使用时，可以把其中的用户名、路径、输出风格和项目集规则替换成自己的版本。
 
-当前推荐安装版本：`v0.2.4`
+当前推荐安装版本：`v0.2.5`
 
 ## 当前版本的设计重点
 
 - 已按 GPT-5.6 的提示词特性做过适配：强调 outcome-first、执行授权、证据边界、停止条件和最小必要上下文。
 - 已优化 Superpowers / Skill 的触发逻辑：显式点名必须使用，隐式调用保持克制，不因极弱关联触发重型流程 Skill。
 - Skill 与 Superpowers 不扩大用户授权，不绕过沙箱、审批、外部写入、线上变更、推送或 PR 边界。
-- 已补充父级工作区模板：除“项目集”外，也支持“独立项目”这类会持续新增正式项目的父级目录。
+- 父级目录模板是可选工具，不是默认安装项；普通项目列表目录优先保持干净，只在明确需要父级规则时安装。
 - 规则包配套验证脚本、GitHub Release 和 Wiki，方便团队确认当前安装版本与更新内容。
 
 ## 1. 为什么需要这套规则包
@@ -85,7 +85,7 @@ Superpowers / Skill 的调用也做了边界控制：
 当前推荐安装正式 Release 版本：
 
 ```bash
-git clone --branch v0.2.4 https://github.com/guofu-shiqu/codex-agent-rules.git
+git clone --branch v0.2.5 https://github.com/guofu-shiqu/codex-agent-rules.git
 ```
 
 ## 4. 文件结构
@@ -141,7 +141,7 @@ Project and Agent/
 可选但保留：
 
 - `Project and Agent/Parent Project Set/AGENTS.md`：父级项目规则。适合“项目集”这类会管理多个子项目的目录；没有父级项目时可以跳过。
-- `Project and Agent/Parent Independent Projects/AGENTS.md`：父级独立项目规则。适合“独立项目”这类会持续新增正式项目的目录；没有这类父级目录时可以跳过。
+- `Project and Agent/Parent Independent Projects/AGENTS.md`：父级独立项目规则样例。仅在明确需要父级目录规则时使用；如果该目录在 Finder 中主要作为项目列表，不建议默认放置父级 `AGENTS.md`。
 
 不包含：
 
@@ -182,7 +182,9 @@ docs/agent/memory-and-decisions.md
 
 临时对话、一次性草稿、短期试验目录，不需要创建项目级 `AGENTS.md`。
 
-如果正式项目位于一个长期父级目录下，例如“项目集”或“独立项目”，建议先把对应父级模板复制为该父级目录的 `AGENTS.md`。这样以后新建空项目时，Codex 能先读到父级规则，再判断是否需要补齐项目级骨架。
+如果正式项目位于一个长期父级目录下，例如“项目集”或“独立项目”，父级模板是可选增强。只有当你明确希望该父级目录统一管理子项目创建规则时，才把对应父级模板复制为该父级目录的 `AGENTS.md`。
+
+如果父级目录主要用于陈列一个个独立项目，推荐不放父级 `AGENTS.md`，而是在每个正式项目根目录放自己的 `AGENTS.md`。
 
 ## 8. 验证规则包
 
@@ -198,7 +200,7 @@ docs/agent/memory-and-decisions.md
 - 项目级主 `AGENTS.md` 能路由到 `docs/agent/`。
 - 主动沉淀和暂停沉淀规则存在。
 - 新项目模板复制后能形成完整项目级 Agent 骨架。
-- 父级“项目集”和“独立项目”模板都能说明何时补齐子项目骨架。
+- 父级“项目集”和“独立项目”模板都能说明自身是可选增强，而不是默认必备文件。
 - README 配图、Wiki 源文件和 Release 版本文本存在。
 
 ## 9. 版本与 Wiki

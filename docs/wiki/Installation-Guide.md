@@ -7,7 +7,7 @@
 推荐安装正式 Release 版本，避免团队成员安装到不同提交。
 
 ```bash
-git clone --branch v0.2.4 https://github.com/guofu-shiqu/codex-agent-rules.git
+git clone --branch v0.2.5 https://github.com/guofu-shiqu/codex-agent-rules.git
 ```
 
 ## 2. 安装全局 AGENTS.md
@@ -31,9 +31,11 @@ cp -R "Project and Agent/Child Project Template" ~/.codex/agent-templates/projec
 
 正式新项目创建时，从该模板复制项目级基础文件。
 
-## 4. 安装父级目录模板（可选）
+## 4. 安装父级目录模板（可选，默认跳过）
 
-如果你有父级项目目录，可以按目录类型复制对应模板：
+父级目录模板不是必备文件。普通项目列表目录建议保持干净，只在明确需要父级规则时安装。
+
+如果你有父级项目目录，并希望它统一管理子项目创建规则，可以按目录类型复制对应模板：
 
 ```bash
 # 项目集
@@ -43,7 +45,7 @@ cp "Project and Agent/Parent Project Set/AGENTS.md" "/path/to/project-set/AGENTS
 cp "Project and Agent/Parent Independent Projects/AGENTS.md" "/path/to/independent-projects/AGENTS.md"
 ```
 
-父级模板用于让 Codex 在进入空的新项目目录时，先判断是否需要补齐项目级 `AGENTS.md`、`README.md`、`docs/agent/` 和 `.learnings/`。
+父级模板用于让 Codex 在进入空的新项目目录时，先判断是否需要补齐项目级 `AGENTS.md`、`README.md`、`docs/agent/` 和 `.learnings/`。没有父级模板时，也可以直接在具体项目根目录补齐项目级骨架。
 
 ## 5. 验证安装
 
@@ -70,5 +72,5 @@ git describe --tags --always
 当前正式版本应为：
 
 ```text
-v0.2.4
+v0.2.5
 ```

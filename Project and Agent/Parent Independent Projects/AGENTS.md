@@ -1,5 +1,9 @@
 # 独立项目 AGENTS.md
 
+本文件是可选父级模板，不是必备文件。
+
+只有当 `/Users/guofu/Documents/独立项目` 需要统一管理子项目创建规则时，才把本文件复制为该目录的 `AGENTS.md`。如果该目录主要作为 Finder 中的独立项目列表，推荐不安装父级 `AGENTS.md`，改为在每个具体项目根目录维护自己的 `AGENTS.md`。
+
 本文件叠加 guofu 的全局 `/Users/guofu/.codex/AGENTS.md`，适用于 `/Users/guofu/Documents/独立项目` 及其子项目。
 
 若子项目存在自己的 `AGENTS.md`，先遵循本文件，再叠加子项目规则；若冲突，以更具体的子项目规则为准。
