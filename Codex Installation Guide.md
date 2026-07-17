@@ -19,7 +19,9 @@
 1. 先备份我本机已有的 ~/.codex/AGENTS.md。
 2. 把根目录 AGENTS.md 安装为 ~/.codex/AGENTS.md。
 3. 把 Project and Agent/Child Project Template/ 安装为 ~/.codex/agent-templates/project-agent/。
-4. 如果我有父级项目目录，请询问我路径，再把 Project and Agent/Parent Project Set/AGENTS.md 放到父级项目目录的 AGENTS.md。
+4. 如果我有父级项目目录，请询问我路径和类型，再把对应父级模板放到父级项目目录的 AGENTS.md。
+   - 项目集：Project and Agent/Parent Project Set/AGENTS.md
+   - 独立项目：Project and Agent/Parent Independent Projects/AGENTS.md
 5. 安装后帮我验证文件是否存在，并告诉我后续创建正式项目时应该复制哪个模板目录。
 ```
 
@@ -61,12 +63,18 @@ cp -R "Project and Agent/Child Project Template/." ~/.codex/agent-templates/proj
 ~/.codex/agent-templates/project-agent/.learnings/ERRORS.md
 ```
 
-### 2.4 安装父级项目规则（可选）
+### 2.4 安装父级目录规则（可选）
 
 如果你有类似“项目集”的父级目录，可以复制：
 
 ```bash
 cp "Project and Agent/Parent Project Set/AGENTS.md" "/path/to/your/project-set/AGENTS.md"
+```
+
+如果你有类似“独立项目”的父级目录，可以复制：
+
+```bash
+cp "Project and Agent/Parent Independent Projects/AGENTS.md" "/path/to/your/independent-projects/AGENTS.md"
 ```
 
 如果没有父级项目目录，可以跳过。
@@ -92,6 +100,8 @@ docs/agent/memory-and-decisions.md
 
 然后根据项目实际情况修改新项目自己的 `AGENTS.md` 和 `README.md`。
 
+如果正式项目已经是空目录，但还没有 `AGENTS.md`，应先补齐上述项目级骨架，再继续实施具体任务。仅把目录加入 Codex trusted project 不等于项目初始化完成。
+
 ## 4. 验证安装
 
 检查全局规则：
@@ -110,7 +120,7 @@ test -f ~/.codex/agent-templates/project-agent/.learnings/LEARNINGS.md && echo "
 test -f ~/.codex/agent-templates/project-agent/.learnings/ERRORS.md && echo "Project errors OK"
 ```
 
-如果你是在维护这套规则包本身，修改全局 Agent、项目集 Agent、项目级模板或测试用例后，再运行：
+如果你是在维护这套规则包本身，修改全局 Agent、父级目录 Agent、项目级模板或测试用例后，再运行：
 
 ```bash
 ./scripts/verify-agent-rules.sh
@@ -120,6 +130,7 @@ test -f ~/.codex/agent-templates/project-agent/.learnings/ERRORS.md && echo "Pro
 
 - 全局规则放在 `~/.codex/AGENTS.md`。
 - 新项目模板源头放在 `~/.codex/agent-templates/project-agent/`。
+- 父级项目规则可放在长期父级目录的 `AGENTS.md`，例如项目集或独立项目目录。
 - 具体项目只使用复制后的项目根目录 `AGENTS.md`。
 - 不要用软链接连接模板和项目，避免项目之间互相污染。
 - 临时对话、一次性草稿、短期试验目录，不需要创建项目级 `AGENTS.md`。

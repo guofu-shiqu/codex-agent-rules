@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-07-17 Independent Project Parent Template
+
+### Added
+
+- Added `Project and Agent/Parent Independent Projects/AGENTS.md` for long-lived independent project workspaces.
+- Added `Project and Agent/README.md` to document the maintenance boundary between parent workspace templates and child project templates.
+- Added `tests/cases/independent-project-new-project.md` to cover empty formal projects under independent project directories.
+
+### Updated
+
+- Updated README, installation guide and Wiki sources to document parent workspace templates.
+- Updated release-based install guidance to `v0.2.4`.
+- Extended `scripts/verify-agent-rules.sh` so project set and independent project parent templates are both validated.
+
+### Fixed
+
+- Clarified that a directory being registered as a Codex trusted project does not mean project-level Agent initialization is complete.
+
 ## 2026-07-16 README Visual Storytelling
 
 ### Updated

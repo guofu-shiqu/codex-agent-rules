@@ -7,7 +7,7 @@
 推荐安装正式 Release 版本，避免团队成员安装到不同提交。
 
 ```bash
-git clone --branch v0.2.3 https://github.com/guofu-shiqu/codex-agent-rules.git
+git clone --branch v0.2.4 https://github.com/guofu-shiqu/codex-agent-rules.git
 ```
 
 ## 2. 安装全局 AGENTS.md
@@ -31,7 +31,21 @@ cp -R "Project and Agent/Child Project Template" ~/.codex/agent-templates/projec
 
 正式新项目创建时，从该模板复制项目级基础文件。
 
-## 4. 验证安装
+## 4. 安装父级目录模板（可选）
+
+如果你有父级项目目录，可以按目录类型复制对应模板：
+
+```bash
+# 项目集
+cp "Project and Agent/Parent Project Set/AGENTS.md" "/path/to/project-set/AGENTS.md"
+
+# 独立项目
+cp "Project and Agent/Parent Independent Projects/AGENTS.md" "/path/to/independent-projects/AGENTS.md"
+```
+
+父级模板用于让 Codex 在进入空的新项目目录时，先判断是否需要补齐项目级 `AGENTS.md`、`README.md`、`docs/agent/` 和 `.learnings/`。
+
+## 5. 验证安装
 
 在规则包仓库根目录运行：
 
@@ -42,10 +56,10 @@ cp -R "Project and Agent/Child Project Template" ~/.codex/agent-templates/projec
 当前版本预期结果：
 
 ```text
-91 passed, 0 failed
+以 Release 页面为准。
 ```
 
-## 5. 确认版本
+## 6. 确认版本
 
 团队成员应确认当前安装来源：
 
@@ -56,5 +70,5 @@ git describe --tags --always
 当前正式版本应为：
 
 ```text
-v0.2.3
+v0.2.4
 ```

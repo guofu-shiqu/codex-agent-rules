@@ -2,6 +2,30 @@
 
 本页记录正式 GitHub Release 版本。
 
+## v0.2.4 - Independent Project Parent Template
+
+Release：
+
+<https://github.com/guofu-shiqu/codex-agent-rules/releases/tag/v0.2.4>
+
+对应提交：
+
+以 Release 页面为准。
+
+### 主要更新
+
+- 新增 `Project and Agent/Parent Independent Projects/AGENTS.md`，用于“独立项目”这类父级目录。
+- 新增 `Project and Agent/README.md`，说明项目级模板目录的维护边界。
+- 明确空的新项目目录即使已被 Codex trusted，也不等于项目级 Agent 初始化完成。
+- 安装指南新增父级目录模板选择：项目集与独立项目。
+- 新增独立项目初始化测试用例，并扩展验证脚本。
+
+### 验证结果
+
+```text
+以 Release 页面为准。
+```
+
 ## v0.2.3 - README Visual Storytelling
 
 Release：

@@ -1,6 +1,6 @@
 # Agent Rule Architecture
 
-本页说明全局 `AGENTS.md`、项目级 `AGENTS.md` 和配套文件之间的关系。
+本页说明全局 `AGENTS.md`、父级目录 `AGENTS.md`、项目级 `AGENTS.md` 和配套文件之间的关系。
 
 ## 1. 全局规则
 
@@ -19,7 +19,28 @@
 
 全局规则应保持单文件可读、分区清楚、不过度拆散。
 
-## 2. 项目级规则
+## 2. 父级目录规则
+
+位置：
+
+```text
+<workspace>/AGENTS.md
+```
+
+用途：
+
+- 定义某个父级目录是否承载正式项目。
+- 定义该目录下新项目何时需要复制项目级基础骨架。
+- 定义父级目录与子项目之间的读序。
+
+当前内置两类父级模板：
+
+- `Project and Agent/Parent Project Set/AGENTS.md`
+- `Project and Agent/Parent Independent Projects/AGENTS.md`
+
+父级规则不写具体项目需求；具体项目需求仍写入子项目自己的 `AGENTS.md`。
+
+## 3. 项目级规则
 
 位置：
 
@@ -38,7 +59,7 @@
 
 项目级规则只写项目特有内容，不重复全局规则。
 
-## 3. 项目分支资料
+## 4. 项目分支资料
 
 推荐结构：
 
@@ -59,14 +80,14 @@ docs/
 - `.learnings/LEARNINGS.md`：项目已确认经验。
 - `.learnings/ERRORS.md`：项目已踩错误与避免方式。
 
-## 4. 加载关系
+## 5. 加载关系
 
 默认关系：
 
 ```text
 全局 AGENTS.md
-  -> 项目级 AGENTS.md
-    -> 目录级 AGENTS.md
+  -> 父级目录 AGENTS.md（可选）
+    -> 项目级 AGENTS.md
       -> docs/agent 与 .learnings 按需读取
 ```
 
