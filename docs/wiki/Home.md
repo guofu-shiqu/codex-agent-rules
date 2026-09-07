@@ -16,12 +16,12 @@
 - v0.3.0 新增 GPT-6 Astra 适配：授权继承、精确技能触发、复用确认、按风险验证、按需检索与写入授权统一、按规模表达。
 - 已有用户参阅 [Astra 技能更新与升级说明](https://github.com/guofu-shiqu/codex-agent-rules/blob/main/skill-updates/README.md)。模板更新不自动迁移已有项目，个人档案不公开。
 
-- 已按 GPT-5.6 的提示词特性做过适配：强调 outcome-first、执行授权、证据边界、停止条件和最小必要上下文。
+- 已针对 GPT-6 Astra 的提示词与技能行为做适配：强调结果优先、授权继承、证据边界、停止条件和最小必要上下文。
 - 已优化 Superpowers / Skill 的触发逻辑：显式点名必须使用，隐式调用保持克制，不因极弱关联触发重型流程 Skill。
 - Skill 与 Superpowers 不扩大用户授权，不绕过沙箱、审批、外部写入、线上变更、推送或 PR 边界。
 - 父级目录模板是可选工具，不是默认安装项；普通项目列表目录优先保持干净。
 - 规则包配套验证脚本、GitHub Release 和 Wiki，方便团队确认当前安装版本与更新内容。
-- README 已加入 5 张 GPT-image-2 生成的视觉说明图，用于解释痛点、经验沉淀、分层架构、GPT-5.6 适配和 Skill 边界。
+- README 展示 4 张视觉说明图，解释规则痛点、经验沉淀、分层架构和 Skill 边界；GPT-6 Astra 适配使用六项调整表说明。
 
 ## 主要页面
 

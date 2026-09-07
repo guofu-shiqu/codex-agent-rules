@@ -35,7 +35,7 @@ v0.3.0 根据 [OpenAI Astra 指南](https://developers.openai.com/api/docs/guide
 | 经验沉淀 | 按需检索，统一候选与写入授权，不自动双写个人档案 |
 | 输出表达 | 按改动规模表达，保留必要证据，减少固定模板空章节 |
 
-此前已按 GPT-5.6 的提示词特性做过适配；本版继续保留结果优先、证据边界和最小必要上下文，并细化 Astra 的执行边界。
+当前规则已针对 GPT-6 Astra 的提示词与技能行为做适配：保留结果优先、证据边界和最小必要上下文，并明确执行授权与完成条件。
 
 - 已优化 Superpowers / Skill 的触发逻辑：显式点名必须使用，隐式调用保持克制，不因极弱关联触发重型流程 Skill。
 - Skill 与 Superpowers 不扩大用户授权，不绕过沙箱、审批、外部写入、线上变更、推送或 PR 边界。
@@ -71,9 +71,7 @@ v0.3.0 根据 [OpenAI Astra 指南](https://developers.openai.com/api/docs/guide
 - 父级项目 `AGENTS.md` 适合管理项目集，例如多个子项目共享同一套结束语、流程或目录规范。
 - 子项目模板负责新项目的基础骨架，包括项目级 `AGENTS.md`、`docs/agent/` 和 `.learnings/`。
 
-![GPT-5.6 适配](docs/assets/readme/04-gpt56-adaptation.png)
-
-上图为此前 GPT-5.6 适配的说明图。v0.3.0 在这些基础原则上增加了上方列出的 Astra 调整：
+GPT-6 Astra 的协作遵循以下基础原则，并结合上方六项调整执行：
 
 - 结果优先：先明确最终交付和成功标准。
 - 证据边界：区分已验证事实、推断和待确认内容。
