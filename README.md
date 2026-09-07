@@ -1,5 +1,9 @@
 # Codex Agent 规则包
 
+**当前版本：[v0.3.0 · GPT-6 Astra 指令适配](https://github.com/guofu-shiqu/codex-agent-rules/releases/tag/v0.3.0)**
+
+[下载完整规则包](https://github.com/guofu-shiqu/codex-agent-rules/releases/download/v0.3.0/codex-agent-rules-v0.3.0.zip) · [安装与升级说明](skill-updates/README.md) · [更新日志](CHANGELOG.md) · [Wiki](https://github.com/guofu-shiqu/codex-agent-rules/wiki)
+
 ![三层架构](docs/assets/readme/03-agent-architecture.png)
 
 这是一套可以交给 Codex 安装的 Agent 规则包，用来把全局规则、项目规则、经验沉淀和版本发布串成可验证的工作流。
@@ -20,10 +24,19 @@
 
 ## 当前版本的设计重点
 
-新增 GPT-6 Astra 指令适配：已授权工作无需重复确认，技能按直接匹配触发，复用已确认方案，按行为风险验证，统一沉淀授权，按改动规模表达。详见 [Astra 更新与技能安装](skill-updates/README.md)。本版本提供结构验证及行为验收用例，不将静态检查等同于模型行为保证。
+v0.3.0 根据 [OpenAI Astra 指南](https://developers.openai.com/api/docs/guides/latest-model) 和 [Eric Provencher 的文章](https://x.com/pvncher/status/2095991462416490862)，完成六项调整：
 
+| 调整 | 新版行为 |
+|---|---|
+| 授权继承 | 已明确授权的操作及必要步骤持续执行；新增范围或缺失授权时才暂停 |
+| 技能触发 | 按任务直接匹配和实际收益选择，避免弱关联触发重型流程 |
+| 方案确认 | 复用已有确认；非必要技能缺失或禁用时，用可用能力继续 |
+| 验证范围 | 按行为风险验证，保留已有工作，补足有效测试 |
+| 经验沉淀 | 按需检索，统一候选与写入授权，不自动双写个人档案 |
+| 输出表达 | 按改动规模表达，保留必要证据，减少固定模板空章节 |
 
-- 已按 GPT-5.6 的提示词特性做过适配：强调 outcome-first、执行授权、证据边界、停止条件和最小必要上下文。
+此前已按 GPT-5.6 的提示词特性做过适配；本版继续保留结果优先、证据边界和最小必要上下文，并细化 Astra 的执行边界。
+
 - 已优化 Superpowers / Skill 的触发逻辑：显式点名必须使用，隐式调用保持克制，不因极弱关联触发重型流程 Skill。
 - Skill 与 Superpowers 不扩大用户授权，不绕过沙箱、审批、外部写入、线上变更、推送或 PR 边界。
 - 父级目录模板是可选工具，不是默认安装项；普通项目列表目录优先保持干净，只在明确需要父级规则时安装。
@@ -60,7 +73,7 @@
 
 ![GPT-5.6 适配](docs/assets/readme/04-gpt56-adaptation.png)
 
-当前版本已经按 GPT-5.6 的提示词特性做过收敛：
+上图为此前 GPT-5.6 适配的说明图。v0.3.0 在这些基础原则上增加了上方列出的 Astra 调整：
 
 - 结果优先：先明确最终交付和成功标准。
 - 证据边界：区分已验证事实、推断和待确认内容。
@@ -91,6 +104,13 @@ Superpowers / Skill 的调用也做了边界控制：
 git clone --branch v0.3.0 https://github.com/guofu-shiqu/codex-agent-rules.git
 ```
 
+### 已有用户升级
+
+1. 下载 v0.3.0，先备份并比较本机全局规则与项目模板，再合并差异。
+2. 使用 Superpowers 或 Guofu-improving-Agent 时，按 [技能更新说明](skill-updates/README.md) 应用对应更新；保留已有脚本、资源和元数据。
+3. 已有项目逐个合并专属规则；更新模板不会自动更新现有项目。个人 Profile 和配置不包含在公开下载包中。
+4. 运行基础检查，并在新任务中按 [Astra 行为用例](tests/cases/astra-boundaries.md) 验证触发与授权行为。
+
 ## 4. 文件结构
 
 ```text
@@ -107,6 +127,14 @@ scripts/
 tests/
 ├── README.md
 └── cases/
+skill-updates/
+├── README.md
+├── superpowers/
+│   ├── astra.patch
+│   └── LICENSE
+└── Guofu-improving-Agent/
+    ├── SKILL.md
+    └── references/record-formats.md
 Project and Agent/
 ├── README.md
 ├── Parent Project Set/
@@ -142,6 +170,8 @@ Project and Agent/
 - `Project and Agent/Child Project Template/docs/agent/`：项目级分支规则，随模板复制，按任务命中读取。
 
 可选但保留：
+
+- `skill-updates/`：已有 Superpowers 和经验技能的 Astra 更新包，使用对应技能时按说明合并。
 
 - `Project and Agent/Parent Project Set/AGENTS.md`：父级项目规则。适合“项目集”这类会管理多个子项目的目录；没有父级项目时可以跳过。
 - `Project and Agent/Parent Independent Projects/AGENTS.md`：父级独立项目规则样例。仅在明确需要父级目录规则时使用；如果该目录在 Finder 中主要作为项目列表，不建议默认放置父级 `AGENTS.md`。
@@ -190,6 +220,10 @@ docs/agent/memory-and-decisions.md
 如果父级目录主要用于陈列一个个独立项目，推荐不放父级 `AGENTS.md`，而是在每个正式项目根目录放自己的 `AGENTS.md`。
 
 ## 8. 验证规则包
+
+v0.3.0 已通过 **138 项结构检查**；四个 Superpowers 技能通过格式校验。Guofu-improving-Agent 保留既有大写名称以兼容调用，存在新版小写命名校验例外。
+
+真实会话验收用例已提供，尚未批量实测。结构检查、模拟写回和技能格式检查均不能证明模型在所有任务中一定触发。
 
 修改全局 Agent、父级目录 Agent、项目级模板或测试用例后，在仓库根目录运行：
 

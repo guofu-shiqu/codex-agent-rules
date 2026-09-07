@@ -9,9 +9,12 @@
 - 当前正式版本：`v0.3.0`
 - Release：<https://github.com/guofu-shiqu/codex-agent-rules/releases/tag/v0.3.0>
 - 对应提交：以 Release 页面为准。
-- 验证结果：`133 passed, 0 failed`
+- 结构验证结果：`138 passed, 0 failed`；真实会话用例尚未批量实测。
 
 ## 当前设计重点
+
+- v0.3.0 新增 GPT-6 Astra 适配：授权继承、精确技能触发、复用确认、按风险验证、按需检索与写入授权统一、按规模表达。
+- 已有用户参阅 [Astra 技能更新与升级说明](https://github.com/guofu-shiqu/codex-agent-rules/blob/main/skill-updates/README.md)。模板更新不自动迁移已有项目，个人档案不公开。
 
 - 已按 GPT-5.6 的提示词特性做过适配：强调 outcome-first、执行授权、证据边界、停止条件和最小必要上下文。
 - 已优化 Superpowers / Skill 的触发逻辑：显式点名必须使用，隐式调用保持克制，不因极弱关联触发重型流程 Skill。
