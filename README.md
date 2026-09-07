@@ -16,9 +16,12 @@
 
 这份仓库保留了 guofu 当前使用的规则口径。团队或个人使用时，可以把其中的用户名、路径、输出风格和项目集规则替换成自己的版本。
 
-当前推荐安装版本：`v0.2.5`
+当前推荐安装版本：`v0.3.0`
 
 ## 当前版本的设计重点
+
+新增 GPT-6 Astra 指令适配：已授权工作无需重复确认，技能按直接匹配触发，复用已确认方案，按行为风险验证，统一沉淀授权，按改动规模表达。详见 [Astra 更新与技能安装](skill-updates/README.md)。本版本提供结构验证及行为验收用例，不将静态检查等同于模型行为保证。
+
 
 - 已按 GPT-5.6 的提示词特性做过适配：强调 outcome-first、执行授权、证据边界、停止条件和最小必要上下文。
 - 已优化 Superpowers / Skill 的触发逻辑：显式点名必须使用，隐式调用保持克制，不因极弱关联触发重型流程 Skill。
@@ -85,7 +88,7 @@ Superpowers / Skill 的调用也做了边界控制：
 当前推荐安装正式 Release 版本：
 
 ```bash
-git clone --branch v0.2.5 https://github.com/guofu-shiqu/codex-agent-rules.git
+git clone --branch v0.3.0 https://github.com/guofu-shiqu/codex-agent-rules.git
 ```
 
 ## 4. 文件结构

@@ -1,0 +1,692 @@
+diff --git a/skills/brainstorming/SKILL.md b/skills/brainstorming/SKILL.md
+index 789c3a1..c076310 100644
+--- a/skills/brainstorming/SKILL.md
++++ b/skills/brainstorming/SKILL.md
+@@ -1,151 +1,24 @@
+ ---
+ name: brainstorming
+-description: "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation."
++description: 用于目标、范围或关键方案尚未确定的产品与技术设计，或用户明确要求先讨论方案时。
+ ---
+ 
+-# Brainstorming Ideas Into Designs
++# 方案讨论
+ 
+-Help turn ideas into fully formed designs and specs through natural collaborative dialogue.
++先读取与待决策问题直接相关的现有材料，复用用户已确认的目标、范围和方案。只澄清会改变核心结果、现有资料无法解决且不能安全假设的问题；优先一个关键问题，用户要求集中提问时遵循其要求。
+ 
+-Start by understanding the current project context, then ask questions one at a time to refine the idea. Once you understand what you're building, present the design and get user approval.
++存在实质取舍时比较合理方向，说明证据、影响和建议。方案详细程度取决于复杂度与维护需要，不强制固定章节或数量。
+ 
+-<HARD-GATE>
+-Do NOT invoke any implementation skill, write any code, scaffold any project, or take any implementation action until you have presented a design and the user has approved it. This applies to EVERY project regardless of perceived simplicity.
+-</HARD-GATE>
++用户要求先审方案时，交付具体、可审核草案并等待确认。已批准方案或明确局部改动不重复进入审批。只请求规划时以规划为终点。
+ 
+-## Anti-Pattern: "This Is Too Simple To Need A Design"
++## 进入实施
+ 
+-Every project goes through this process. A todo list, a single-function utility, a config change — all of them. "Simple" projects are where unexamined assumptions cause the most wasted work. The design can be short (a few sentences for truly simple projects), but you MUST present it and get approval.
++是否保存设计文档取决于任务规模、长期维护需要及交付要求；不因技能自动提交 Git。已有设计目录优先沿用。
+ 
+-## Checklist
++方案获批且实施已授权后继续推进。如 planning 技能可用且有实际收益，可调用；否则使用当前可用规划能力继续。缺失或禁用技能不构成唯一出口。
+ 
+-You MUST create a task for each of these items and complete them in order:
++## 设计检查
+ 
+-1. **Explore project context** — check files, docs, recent commits
+-2. **Offer the visual companion just-in-time** — NOT upfront. The first time a question would genuinely be clearer shown than described, offer it then (its own message); on approval its browser tab opens for you. If no visual question ever arises, never offer it. See the Visual Companion section below.
+-3. **Ask clarifying questions** — one at a time, understand purpose/constraints/success criteria
+-4. **Propose 2-3 approaches** — with trade-offs and your recommendation
+-5. **Present design** — in sections scaled to their complexity, get user approval after each section
+-6. **Write design doc** — save to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md` and commit
+-7. **Spec self-review** — quick inline check for placeholders, contradictions, ambiguity, scope (see below)
+-8. **User reviews written spec** — ask user to review the spec file before proceeding
+-9. **Transition to implementation** — invoke writing-plans skill to create implementation plan
++按相关性检查职责边界、输入输出、数据与权限影响、失败恢复、验证方式及关键歧义。优先最小必要方案，不顺带扩大范围。
+ 
+-## Process Flow
+-
+-```dot
+-digraph brainstorming {
+-    "Explore project context" [shape=box];
+-    "Ask clarifying questions" [shape=box];
+-    "Propose 2-3 approaches" [shape=box];
+-    "Present design sections" [shape=box];
+-    "User approves design?" [shape=diamond];
+-    "Write design doc" [shape=box];
+-    "Spec self-review\n(fix inline)" [shape=box];
+-    "User reviews spec?" [shape=diamond];
+-    "Invoke writing-plans skill" [shape=doublecircle];
+-
+-    "Explore project context" -> "Ask clarifying questions";
+-    "Ask clarifying questions" -> "Propose 2-3 approaches";
+-    "Propose 2-3 approaches" -> "Present design sections";
+-    "Present design sections" -> "User approves design?";
+-    "User approves design?" -> "Present design sections" [label="no, revise"];
+-    "User approves design?" -> "Write design doc" [label="yes"];
+-    "Write design doc" -> "Spec self-review\n(fix inline)";
+-    "Spec self-review\n(fix inline)" -> "User reviews spec?";
+-    "User reviews spec?" -> "Write design doc" [label="changes requested"];
+-    "User reviews spec?" -> "Invoke writing-plans skill" [label="approved"];
+-}
+-```
+-
+-**The terminal state is invoking writing-plans.** Do NOT invoke frontend-design, mcp-builder, or any other implementation skill. The ONLY skill you invoke after brainstorming is writing-plans.
+-
+-## The Process
+-
+-**Understanding the idea:**
+-
+-- Check out the current project state first (files, docs, recent commits)
+-- Before asking detailed questions, assess scope: if the request describes multiple independent subsystems (e.g., "build a platform with chat, file storage, billing, and analytics"), flag this immediately. Don't spend questions refining details of a project that needs to be decomposed first.
+-- If the project is too large for a single spec, help the user decompose into sub-projects: what are the independent pieces, how do they relate, what order should they be built? Then brainstorm the first sub-project through the normal design flow. Each sub-project gets its own spec → plan → implementation cycle.
+-- For appropriately-scoped projects, ask questions one at a time to refine the idea
+-- Prefer multiple choice questions when possible, but open-ended is fine too
+-- Only one question per message - if a topic needs more exploration, break it into multiple questions
+-- Focus on understanding: purpose, constraints, success criteria
+-
+-**Exploring approaches:**
+-
+-- Propose 2-3 different approaches with trade-offs
+-- Present options conversationally with your recommendation and reasoning
+-- Lead with your recommended option and explain why
+-- YAGNI ruthlessly - remove unnecessary features from every approach and design
+-
+-**Presenting the design:**
+-
+-- Once you believe you understand what you're building, present the design
+-- Scale each section to its complexity: a few sentences if straightforward, up to 200-300 words if nuanced
+-- Ask after each section whether it looks right so far
+-- Cover: architecture, components, data flow, error handling, testing
+-- Be ready to go back and clarify if something doesn't make sense
+-
+-**Design for isolation and clarity:**
+-
+-- Break the system into smaller units that each have one clear purpose, communicate through well-defined interfaces, and can be understood and tested independently
+-- For each unit, you should be able to answer: what does it do, how do you use it, and what does it depend on?
+-- Can someone understand what a unit does without reading its internals? Can you change the internals without breaking consumers? If not, the boundaries need work.
+-- Smaller, well-bounded units are also easier for you to work with - you reason better about code you can hold in context at once, and your edits are more reliable when files are focused. When a file grows large, that's often a signal that it's doing too much.
+-
+-**Working in existing codebases:**
+-
+-- Explore the current structure before proposing changes. Follow existing patterns.
+-- Where existing code has problems that affect the work (e.g., a file that's grown too large, unclear boundaries, tangled responsibilities), include targeted improvements as part of the design - the way a good developer improves code they're working in.
+-- Don't propose unrelated refactoring. Stay focused on what serves the current goal.
+-
+-## After the Design
+-
+-**Documentation:**
+-
+-- Write the validated design (spec) to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`
+-  - (User preferences for spec location override this default)
+-- Use elements-of-style:writing-clearly-and-concisely skill if available
+-- Commit the design document to git
+-
+-**Spec Self-Review:**
+-After writing the spec document, look at it with fresh eyes:
+-
+-1. **Placeholder scan:** Any "TBD", "TODO", incomplete sections, or vague requirements? Fix them.
+-2. **Internal consistency:** Do any sections contradict each other? Does the architecture match the feature descriptions?
+-3. **Scope check:** Is this focused enough for a single implementation plan, or does it need decomposition?
+-4. **Ambiguity check:** Could any requirement be interpreted two different ways? If so, pick one and make it explicit.
+-
+-Fix any issues inline. No need to re-review — just fix and move on.
+-
+-**User Review Gate:**
+-After the spec review loop passes, ask the user to review the written spec before proceeding:
+-
+-> "Spec written and committed to `<path>`. Please review it and let me know if you want to make any changes before we start writing out the implementation plan."
+-
+-Wait for the user's response. If they request changes, make them and re-run the spec review loop. Only proceed once the user approves.
+-
+-**Implementation:**
+-
+-- Invoke the writing-plans skill to create a detailed implementation plan
+-- Do NOT invoke any other skill. writing-plans is the next step.
+-
+-## Visual Companion
+-
+-A browser-based companion for showing mockups, diagrams, and visual options during brainstorming. Available as a tool — not a mode. Accepting the companion means it's available for questions that benefit from visual treatment; it does NOT mean every question goes through the browser.
+-
+-**Offering the companion (just-in-time):** Do NOT offer it upfront. Wait until a question would genuinely be clearer shown than told — a real mockup / layout / diagram question, not merely a UI *topic*. The first time that happens, offer it then, as its own message:
+-> "This next part might be easier if I show you — I can put together mockups, diagrams, and comparisons in a browser tab as we go. It's still new and can be token-intensive. Want me to? I'll open it for you."
+-
+-**This offer MUST be its own message.** Only the offer — no clarifying question, summary, or other content. Wait for the user's response. If they accept, start the server with `--open` so their browser opens to the first screen automatically. If they decline, continue text-only and don't offer again unless they raise it.
+-
+-**Per-question decision:** Even after the user accepts, decide FOR EACH QUESTION whether to use the browser or the terminal. The test: **would the user understand this better by seeing it than reading it?**
+-
+-- **Use the browser** for content that IS visual — mockups, wireframes, layout comparisons, architecture diagrams, side-by-side visual designs
+-- **Use the terminal** for content that is text — requirements questions, conceptual choices, tradeoff lists, A/B/C/D text options, scope decisions
+-
+-A question about a UI topic is not automatically a visual question. "What does personality mean in this context?" is a conceptual question — use the terminal. "Which wizard layout works better?" is a visual question — use the browser.
+-
+-If they agree to the companion, read the detailed guide before proceeding:
+-`skills/brainstorming/visual-companion.md`
++视觉方案确需比较且用户同意使用视觉辅助时，可读取 visual-companion.md；纯文字需求不加载该资料。
+diff --git a/skills/requesting-code-review/SKILL.md b/skills/requesting-code-review/SKILL.md
+index fa4f2f9..9652199 100644
+--- a/skills/requesting-code-review/SKILL.md
++++ b/skills/requesting-code-review/SKILL.md
+@@ -1,95 +1,14 @@
+ ---
+ name: requesting-code-review
+-description: Use when completing tasks, implementing major features, or before merging to verify work meets requirements
++description: 用于重要逻辑、共享模块、权限或数据合约变更，合并前按项目要求审查，或用户明确点名时。
+ ---
+ 
+-# Requesting Code Review
++# 代码审查
+ 
+-Dispatch a code reviewer subagent to catch issues before they cascade. The reviewer gets precisely crafted context for evaluation — never your session's history.
++根据变更风险选择审查范围。局部低影响改动允许本地差异自检；重要逻辑或共享合约变更在工具可用且有收益时分派独立审查者。用户或项目明确要求独立审查时遵循，并如实报告工具限制。
+ 
+-**Core principle:** Review early, review often.
++给审查者提供需求、准确的变更范围、必要原始资料和实际验证结果，不发送整个会话历史。包含未提交改动时使用实际 diff，不默认以 HEAD~1 代表本轮范围。需要交接格式时读取 code-reviewer.md。
+ 
+-## When to Request Review
++优先报告有证据的缺陷、回归、边界问题和缺失验证，附文件位置及影响。修复本次范围内的关键问题；范围外问题单独说明。不把审查意见自动当成事实，有争议时检查代码或测试证据。
+ 
+-**Mandatory:**
+-- After each task in subagent-driven development
+-- After completing major feature
+-- Before merge to main
+-
+-**Optional but valuable:**
+-- When stuck (fresh perspective)
+-- Before refactoring (baseline check)
+-- After fixing complex bug
+-
+-## How to Request
+-
+-**1. Get git SHAs:**
+-```bash
+-BASE_SHA=$(git rev-parse HEAD~1)  # or origin/main
+-HEAD_SHA=$(git rev-parse HEAD)
+-```
+-
+-**2. Dispatch code reviewer subagent:**
+-
+-Dispatch a `general-purpose` subagent, filling the template at [code-reviewer.md](code-reviewer.md)
+-
+-**Placeholders:**
+-- `{DESCRIPTION}` - Brief summary of what you built
+-- `{PLAN_OR_REQUIREMENTS}` - What it should do
+-- `{BASE_SHA}` - Starting commit
+-- `{HEAD_SHA}` - Ending commit
+-
+-**3. Act on feedback:**
+-- Fix Critical issues immediately
+-- Fix Important issues before proceeding
+-- Note Minor issues for later
+-- Push back if reviewer is wrong (with reasoning)
+-
+-## Example
+-
+-```
+-[Just completed Task 2: Add verification function]
+-
+-You: Let me request code review before proceeding.
+-
+-BASE_SHA=$(git log --oneline | grep "Task 1" | head -1 | awk '{print $1}')
+-HEAD_SHA=$(git rev-parse HEAD)
+-
+-[Dispatch code reviewer subagent]
+-  DESCRIPTION: Added verifyIndex() and repairIndex() with 4 issue types
+-  PLAN_OR_REQUIREMENTS: Task 2 from docs/superpowers/plans/deployment-plan.md
+-  BASE_SHA: a7981ec
+-  HEAD_SHA: 3df7661
+-
+-[Subagent returns]:
+-  Strengths: Clean architecture, real tests
+-  Issues:
+-    Important: Missing progress indicators
+-    Minor: Magic number (100) for reporting interval
+-  Assessment: Ready to proceed
+-
+-You: [Fix progress indicators]
+-[Continue to Task 3]
+-```
+-
+-## Common Rationalizations
+-
+-| Excuse | Reality |
+-|--------|---------|
+-| "I'll just review the diff myself instead of dispatching a reviewer" | You're the coordinator — reviewing the diff inline burns the context window you need to keep driving the work. Dispatch a reviewer subagent: the diff and the evaluation live in its context, and only the findings come back to you. |
+-| "The reviewer needs my whole session history to understand the change" | Hand it precisely crafted context, never your session's history. That keeps the reviewer on the work product, not your thought process. |
+-
+-## Red Flags
+-
+-**Never:**
+-- Skip review because "it's simple"
+-- Ignore Critical issues
+-- Proceed with unfixed Important issues
+-- Argue with valid technical feedback
+-
+-**If reviewer wrong:**
+-- Push back with technical reasoning
+-- Show code/tests that prove it works
+-- Request clarification
+-
+-See template at: [code-reviewer.md](code-reviewer.md)
++审查本身不授权提交、合并或发布。已存在针对这些动作的授权继续有效，无需重复确认。
+diff --git a/skills/test-driven-development/SKILL.md b/skills/test-driven-development/SKILL.md
+index 4320d88..05db772 100644
+--- a/skills/test-driven-development/SKILL.md
++++ b/skills/test-driven-development/SKILL.md
+@@ -1,320 +1,23 @@
+ ---
+ name: test-driven-development
+-description: Use when implementing any feature or bugfix, before writing implementation code
++description: 用于需要防止回归的程序行为新增或修复；用户或项目明确要求 TDD 时遵循。
+ ---
+ 
+-# Test-Driven Development (TDD)
++# 行为验证与 TDD
+ 
+-## Overview
++优先围绕可观察行为写测试：先构造复现用例，确认失败由目标行为造成，再实现最小修复并运行受影响测试。用户或项目明确要求测试先行时遵循。
+ 
+-Write the test first. Watch it fail. Write minimal code to pass.
++保留已有工作；已有实现缺少验证时，补足有效行为测试，不为流程先后顺序删除重做。
+ 
+-**Core principle:** If you didn't watch the test fail, you don't know if it tests the right thing.
++## 范围
+ 
+-**Violating the letter of the rules is violating the spirit of the rules.**
++- 逻辑修复：覆盖原故障与直接关联的边界情况。
++- 共享合约、权限或数据逻辑：覆盖受影响调用方和重要失败路径。
++- 文案、链接、纯格式及低影响配置调整：按实际风险采用读回、结构或运行检查，无需为例外重复请求确认，也不机械新增程序测试。
++- 已有且适用的项目检查仍需完成。
+ 
+-## When to Use
++测试真实行为，避免只断言 mock 调用或镜像实现。编写复杂测试、使用 mock 或遇到测试可信度问题时，读取 writing-good-tests.md。
+ 
+-**Always:**
+-- New features
+-- Bug fixes
+-- Refactoring
+-- Behavior changes
++运行必要检查并修复当前变更导致的失败；仅在新改动、失败或未解决疑点出现时扩大或重复验证。对无关历史失败说明证据和影响，不擅自扩大修复范围。结构检查不能冒充真实行为验证。
+ 
+-**Exceptions (ask your human partner):**
+-- Throwaway prototypes
+-- Generated code
+-- Configuration files
+-
+-Thinking "skip TDD just this once"? Stop. That's rationalization.
+-
+-## The Iron Law
+-
+-```
+-NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST
+-```
+-
+-Write code before the test? Delete it. Start over.
+-
+-**No exceptions:**
+-- Don't keep it as "reference"
+-- Don't "adapt" it while writing tests
+-- Don't look at it
+-- Delete means delete
+-
+-Implement fresh from tests. Period.
+-
+-## Red-Green-Refactor
+-
+-```dot
+-digraph tdd_cycle {
+-    rankdir=LR;
+-    red [label="RED\nWrite failing test", shape=box, style=filled, fillcolor="#ffcccc"];
+-    verify_red [label="Verify fails\ncorrectly", shape=diamond];
+-    green [label="GREEN\nMinimal code", shape=box, style=filled, fillcolor="#ccffcc"];
+-    verify_green [label="Verify passes\nAll green", shape=diamond];
+-    refactor [label="REFACTOR\nClean up", shape=box, style=filled, fillcolor="#ccccff"];
+-    next [label="Next", shape=ellipse];
+-
+-    red -> verify_red;
+-    verify_red -> green [label="yes"];
+-    verify_red -> red [label="wrong\nfailure"];
+-    green -> verify_green;
+-    verify_green -> refactor [label="yes"];
+-    verify_green -> green [label="no"];
+-    refactor -> verify_green [label="stay\ngreen"];
+-    verify_green -> next;
+-    next -> red;
+-}
+-```
+-
+-### RED - Write Failing Test
+-
+-Write one minimal test showing what should happen.
+-
+-<Good>
+-```typescript
+-test('retries failed operations 3 times', async () => {
+-  let attempts = 0;
+-  const operation = () => {
+-    attempts++;
+-    if (attempts < 3) throw new Error('fail');
+-    return 'success';
+-  };
+-
+-  const result = await retryOperation(operation);
+-
+-  expect(result).toBe('success');
+-  expect(attempts).toBe(3);
+-});
+-```
+-Clear name, tests real behavior, one thing
+-</Good>
+-
+-<Bad>
+-```typescript
+-test('retry works', async () => {
+-  const mock = jest.fn()
+-    .mockRejectedValueOnce(new Error())
+-    .mockRejectedValueOnce(new Error())
+-    .mockResolvedValueOnce('success');
+-  await retryOperation(mock);
+-  expect(mock).toHaveBeenCalledTimes(3);
+-});
+-```
+-Vague name, tests mock not code
+-</Bad>
+-
+-**Requirements:**
+-- One behavior
+-- Clear name
+-- Real code (no mocks unless unavoidable)
+-
+-### Verify RED - Watch It Fail
+-
+-**MANDATORY. Never skip.**
+-
+-```bash
+-npm test path/to/test.test.ts
+-```
+-
+-Confirm:
+-- Test fails (not errors)
+-- Failure message is expected
+-- Fails because feature missing (not typos)
+-
+-**Test passes?** You're testing existing behavior. Fix test.
+-
+-**Test errors?** Fix error, re-run until it fails correctly.
+-
+-### GREEN - Minimal Code
+-
+-Write simplest code to pass the test.
+-
+-<Good>
+-```typescript
+-async function retryOperation<T>(fn: () => Promise<T>): Promise<T> {
+-  for (let i = 0; i < 3; i++) {
+-    try {
+-      return await fn();
+-    } catch (e) {
+-      if (i === 2) throw e;
+-    }
+-  }
+-  throw new Error('unreachable');
+-}
+-```
+-Just enough to pass
+-</Good>
+-
+-<Bad>
+-```typescript
+-async function retryOperation<T>(
+-  fn: () => Promise<T>,
+-  options?: {
+-    maxRetries?: number;
+-    backoff?: 'linear' | 'exponential';
+-    onRetry?: (attempt: number) => void;
+-  }
+-): Promise<T> {
+-  // YAGNI
+-}
+-```
+-Over-engineered
+-</Bad>
+-
+-Don't add features, refactor other code, or "improve" beyond the test.
+-
+-### Verify GREEN - Watch It Pass
+-
+-**MANDATORY.**
+-
+-```bash
+-npm test path/to/test.test.ts
+-```
+-
+-Confirm:
+-- Test passes
+-- Other tests still pass
+-- Output pristine (no errors, warnings)
+-
+-**Test fails?** Fix code, not test.
+-
+-**Other tests fail?** Fix now.
+-
+-### REFACTOR - Clean Up
+-
+-After green only:
+-- Remove duplication
+-- Improve names
+-- Extract helpers
+-
+-Keep tests green. Don't add behavior.
+-
+-### Repeat
+-
+-Next failing test for next feature.
+-
+-## Good Tests
+-
+-| Quality | Good | Bad |
+-|---------|------|-----|
+-| **Minimal** | One thing. "and" in name? Split it. | `test('validates email and domain and whitespace')` |
+-| **Clear** | Name describes behavior | `test('test1')` |
+-| **Shows intent** | Demonstrates desired API | Obscures what code should do |
+-
+-When writing or changing any test, read [writing-good-tests.md](writing-good-tests.md) for the rules that keep tests honest:
+-- Name the production change that would make the test fail — before writing it
+-- Assert on real behavior, never on mock behavior
+-- Keep test-only code in test utilities, out of production classes
+-- Understand a dependency's side effects before mocking it
+-
+-## Common Rationalizations
+-
+-| Excuse | Reality |
+-|--------|---------|
+-| "Too simple to test" | Simple code breaks. Test takes 30 seconds. |
+-| "I'll test after" | Tests written after pass immediately — which proves nothing. They may test the wrong thing, test the implementation instead of the behavior, or miss the edge case you forgot. You never watched it fail, so you never proved it can catch the bug. Test-first forces that failure. |
+-| "Tests after achieve same goals (spirit not ritual)" | Tests-after answer "what does this do?"; tests-first answer "what should this do?" Tests written after are biased by the code you already wrote — you verify the cases you remembered, not the ones you'd have discovered. Coverage without proof the tests work. |
+-| "Already manually tested" | Manual testing is ad-hoc: no record of what you covered, no way to re-run it when the code changes, easy to forget cases under pressure. "Worked when I tried it" ≠ comprehensive. Automated tests run the same way every time. |
+-| "Deleting X hours is wasteful" | Sunk cost fallacy — that time is already spent either way. The real choice: rewrite with TDD (high confidence) vs. keep it and bolt tests on after (low confidence, likely bugs). Keeping code you can't trust is the waste. |
+-| "Keep as reference, write tests first" | You'll adapt it. That's testing after. Delete means delete. |
+-| "Need to explore first" | Fine. Throw away exploration, start with TDD. |
+-| "Test hard = design unclear" | Listen to test. Hard to test = hard to use. |
+-| "TDD will slow me down" | TDD IS the pragmatic path: catches bugs before commit, prevents regressions, lets you refactor without fear. "Pragmatic" shortcuts mean debugging in production — slower, not faster. |
+-| "Manual test faster" | Manual doesn't prove edge cases. You'll re-test every change. |
+-| "Existing code has no tests" | You're improving it. Add tests for existing code. |
+-
+-## Red Flags - STOP and Start Over
+-
+-- Code before test
+-- Test after implementation
+-- Test passes immediately
+-- Can't explain why test failed
+-- Tests added "later"
+-- Rationalizing "just this once"
+-- "I already manually tested it"
+-- "Tests after achieve the same purpose"
+-- "It's about spirit not ritual"
+-- "Keep as reference" or "adapt existing code"
+-- "Already spent X hours, deleting is wasteful"
+-- "TDD is dogmatic, I'm being pragmatic"
+-- "This is different because..."
+-
+-**All of these mean: Delete code. Start over with TDD.**
+-
+-## Example: Bug Fix
+-
+-**Bug:** Empty email accepted
+-
+-**RED**
+-```typescript
+-test('rejects empty email', async () => {
+-  const result = await submitForm({ email: '' });
+-  expect(result.error).toBe('Email required');
+-});
+-```
+-
+-**Verify RED**
+-```bash
+-$ npm test
+-FAIL: expected 'Email required', got undefined
+-```
+-
+-**GREEN**
+-```typescript
+-function submitForm(data: FormData) {
+-  if (!data.email?.trim()) {
+-    return { error: 'Email required' };
+-  }
+-  // ...
+-}
+-```
+-
+-**Verify GREEN**
+-```bash
+-$ npm test
+-PASS
+-```
+-
+-**REFACTOR**
+-Extract validation for multiple fields if needed.
+-
+-## Verification Checklist
+-
+-Before marking work complete:
+-
+-- [ ] Every new function/method has a test
+-- [ ] Watched each test fail before implementing
+-- [ ] Each test failed for expected reason (feature missing, not typo)
+-- [ ] Wrote minimal code to pass each test
+-- [ ] All tests pass
+-- [ ] Output pristine (no errors, warnings)
+-- [ ] Tests use real code (mocks only if unavoidable)
+-- [ ] Edge cases and errors covered
+-
+-Can't check all boxes? You skipped TDD. Start over.
+-
+-## When Stuck
+-
+-| Problem | Solution |
+-|---------|----------|
+-| Don't know how to test | Write wished-for API. Write assertion first. Ask your human partner. |
+-| Test too complicated | Design too complicated. Simplify interface. |
+-| Must mock everything | Code too coupled. Use dependency injection. |
+-| Test setup huge | Extract helpers. Still complex? Simplify design. |
+-
+-## Debugging Integration
+-
+-Bug found? Write failing test reproducing it. Follow TDD cycle. Test proves fix and prevents regression.
+-
+-Never fix bugs without a test.
+-
+-## Final Rule
+-
+-```
+-Production code → test exists and failed first
+-Otherwise → not TDD
+-```
+-
+-No exceptions without your human partner's permission.
++报告实际运行结果和重要未验证事项；测试无法执行时说明原因与可用替代检查。
+diff --git a/skills/using-superpowers/SKILL.md b/skills/using-superpowers/SKILL.md
+index 8a08873..2e386f5 100644
+--- a/skills/using-superpowers/SKILL.md
++++ b/skills/using-superpowers/SKILL.md
+@@ -1,62 +1,27 @@
+ ---
+ name: using-superpowers
+-description: Use when starting any conversation - establishes how to find and use skills, requiring skill invocation before ANY response including clarifying questions
++description: 用于用户明确要求 Superpowers 工作流，或复杂任务需要选择并协调其流程技能时。
+ ---
+ 
+-<SUBAGENT-STOP>
+-If you were dispatched as a subagent to execute a specific task, ignore this skill.
+-</SUBAGENT-STOP>
++# Superpowers 工作流路由
+ 
+-<EXTREMELY-IMPORTANT>
+-If you think there is even a 1% chance a skill might apply to what you are doing, you ABSOLUTELY MUST invoke the skill.
++按当前任务所需能力、输入和交付物选择技能。用户点名的技能应读取并使用；未点名时依据直接匹配和实际收益，不因微弱可能性或单个主题词触发。
+ 
+-IF A SKILL APPLIES TO YOUR TASK, YOU DO NOT HAVE A CHOICE. YOU MUST USE IT.
++- 目标或关键方案未确定：使用 brainstorming。
++- 原因未明的故障：使用 systematic-debugging。
++- 需要防止回归的程序行为新增或修复：使用 test-driven-development。
++- 重要逻辑或共享合约变更、合并前的项目要求：使用 requesting-code-review。
+ 
+-This is not negotiable. You cannot rationalize your way out of this.
+-</EXTREMELY-IMPORTANT>
++重复覆盖同一流程时选择一个主技能。复用用户已确认的目标和授权，不重复审批。技能不扩大授权；当前明确请求与更高层指令优先。缺失或禁用的非必要技能不作为唯一出口，用现有能力继续。
+ 
+-## The Rule
++首次使用技能时说明用途；若技能导致暂停或改变方向，给出具体文件、相关原句及影响，区分要求与自己的解释。
+ 
+-**Invoke relevant or requested skills BEFORE any response or action** — including clarifying questions, exploring the codebase, or checking files. If it turns out wrong for the situation, you don't have to use it.
++## 平台适配
+ 
+-**Before entering plan mode:** if you haven't already brainstormed, invoke the brainstorming skill first.
++需要工具映射时，只读取当前平台的说明：
+ 
+-Then announce "Using [skill] to [purpose]" and follow the skill exactly. If it has a checklist, create a todo per item.
++- Codex：references/codex-tools.md
++- Pi：references/pi-tools.md
++- Antigravity：references/antigravity-tools.md
+ 
+-## Skill Priority
+-
+-When multiple skills apply, process skills come first — they set the approach, then implementation skills (frontend-design, etc.) carry it out. Brainstorming and systematic-debugging are Superpowers' most common process skills, but the rule holds for any of them.
+-
+-- "Let's build X" → superpowers:brainstorming first, then implementation skills.
+-- "Fix this bug" → superpowers:systematic-debugging first, then domain skills.
+-
+-## Red Flags
+-
+-These thoughts mean STOP—you're rationalizing:
+-
+-| Thought | Reality |
+-|---------|---------|
+-| "This is just a simple question" | Questions are tasks. Check for skills. |
+-| "I need more context first" | Skill check comes BEFORE clarifying questions. |
+-| "Let me explore the codebase first" | Skills tell you HOW to explore. Check first. |
+-| "I can check git/files quickly" | Files lack conversation context. Check for skills. |
+-| "Let me gather information first" | Skills tell you HOW to gather information. |
+-| "This doesn't need a formal skill" | If a skill exists, use it. |
+-| "I remember this skill" | Skills evolve. Read current version. |
+-| "This doesn't count as a task" | Action = task. Check for skills. |
+-| "The skill is overkill" | Simple things become complex. Use it. |
+-| "I'll just do this one thing first" | Check BEFORE doing anything. |
+-| "This feels productive" | Undisciplined action wastes time. Skills prevent this. |
+-| "I know what that means" | Knowing the concept ≠ using the skill. Invoke it. |
+-
+-## Platform Adaptation
+-
+-If your harness appears here, read its reference file for special instructions:
+-
+-- Codex: `references/codex-tools.md`
+-- Pi: `references/pi-tools.md`
+-- Antigravity: `references/antigravity-tools.md`
+-
+-## User Instructions
+-
+-User instructions (CLAUDE.md, AGENTS.md, GEMINI.md, etc, direct requests) take precedence over skills, which in turn override default behavior. Only skip skill workflows or instructions when your human partner has explicitly told you to.
++已被分派明确子任务的代理直接执行其边界内工作，不重复发起总体规划。

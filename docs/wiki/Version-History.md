@@ -2,6 +2,12 @@
 
 本页记录正式 GitHub Release 版本。
 
+## v0.3.0 - Astra 指令适配
+
+Release：https://github.com/guofu-shiqu/codex-agent-rules/releases/tag/v0.3.0
+
+授权继承、精确触发、复用确认、按风险验证、按需经验检索和按规模表达。技能补丁与说明位于主仓库 skill-updates/，个人档案不公开。行为用例与静态检查分开验收。
+
 ## v0.2.5 - Optional Parent Workspace Templates
 
 Release：

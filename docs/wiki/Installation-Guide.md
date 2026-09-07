@@ -2,12 +2,14 @@
 
 本页说明如何安装当前版本的 Codex Agent 规则包。
 
+v0.3.0 同时提供可选 [Astra 技能补丁与更新说明](https://github.com/guofu-shiqu/codex-agent-rules/blob/v0.3.0/skill-updates/README.md)。保留已有技能资源和项目专属规则，个人档案不在公开包内。
+
 ## 1. 下载指定版本
 
 推荐安装正式 Release 版本，避免团队成员安装到不同提交。
 
 ```bash
-git clone --branch v0.2.5 https://github.com/guofu-shiqu/codex-agent-rules.git
+git clone --branch v0.3.0 https://github.com/guofu-shiqu/codex-agent-rules.git
 ```
 
 ## 2. 安装全局 AGENTS.md
@@ -72,5 +74,5 @@ git describe --tags --always
 当前正式版本应为：
 
 ```text
-v0.2.5
+v0.3.0
 ```

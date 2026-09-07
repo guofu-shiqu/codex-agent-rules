@@ -6,8 +6,8 @@
 
 ## 当前版本
 
-- 当前正式版本：`v0.2.5`
-- Release：<https://github.com/guofu-shiqu/codex-agent-rules/releases/tag/v0.2.5>
+- 当前正式版本：`v0.3.0`
+- Release：<https://github.com/guofu-shiqu/codex-agent-rules/releases/tag/v0.3.0>
 - 对应提交：以 Release 页面为准。
 - 验证结果：`133 passed, 0 failed`
 
