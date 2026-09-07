@@ -9,7 +9,7 @@
 - 当前正式版本：`v0.3.0`
 - Release：<https://github.com/guofu-shiqu/codex-agent-rules/releases/tag/v0.3.0>
 - 对应提交：以 Release 页面为准。
-- 结构验证结果：`138 passed, 0 failed`；真实会话用例尚未批量实测。
+- 当前主分支结构验证结果：`140 passed, 0 failed`；真实会话用例尚未批量实测。
 
 ## 当前设计重点
 
@@ -21,7 +21,7 @@
 - Skill 与 Superpowers 不扩大用户授权，不绕过沙箱、审批、外部写入、线上变更、推送或 PR 边界。
 - 父级目录模板是可选工具，不是默认安装项；普通项目列表目录优先保持干净。
 - 规则包配套验证脚本、GitHub Release 和 Wiki，方便团队确认当前安装版本与更新内容。
-- README 展示 4 张视觉说明图，解释规则痛点、经验沉淀、分层架构和 Skill 边界；GPT-6 Astra 适配使用六项调整表说明。
+- README 展示 5 张视觉说明图，解释规则痛点、经验沉淀、分层架构、GPT-6 Astra 适配和 Skill 边界；Astra 新图配有六项调整的中文说明。
 
 ## 主要页面
 

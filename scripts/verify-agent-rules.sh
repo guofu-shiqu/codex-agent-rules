@@ -113,6 +113,8 @@ require_file "$readme_assets/01-rules-chaos.png" "README rules chaos visual exis
 require_file "$readme_assets/02-learning-capture.png" "README learning capture visual exists"
 require_file "$readme_assets/03-agent-architecture.png" "README agent architecture visual exists"
 require_file "$readme_assets/04-gpt56-adaptation.png" "README GPT-5.6 adaptation visual exists"
+require_file "$readme_assets/04-gpt6-astra-adaptation.png" "README GPT-6 Astra visual exists"
+require_text "$root_readme" "docs/assets/readme/04-gpt6-astra-adaptation.png" "root README displays GPT-6 Astra visual"
 require_file "$readme_assets/05-skill-release-loop.png" "README skill release loop visual exists"
 
 require_text "$global_agents" "docs/agent/workflows.md" "global AGENTS points to workflow branch"

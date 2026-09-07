@@ -24,6 +24,8 @@
 
 ## 当前版本的设计重点
 
+![GPT-6 Astra 适配：授权继承、精准触发、复用确认、适量验证、按需沉淀、清晰表达](docs/assets/readme/04-gpt6-astra-adaptation.png)
+
 v0.3.0 根据 [OpenAI Astra 指南](https://developers.openai.com/api/docs/guides/latest-model) 和 [Eric Provencher 的文章](https://x.com/pvncher/status/2095991462416490862)，完成六项调整：
 
 | 调整 | 新版行为 |
@@ -219,7 +221,7 @@ docs/agent/memory-and-decisions.md
 
 ## 8. 验证规则包
 
-v0.3.0 已通过 **138 项结构检查**；四个 Superpowers 技能通过格式校验。Guofu-improving-Agent 保留既有大写名称以兼容调用，存在新版小写命名校验例外。
+v0.3.0 发布时通过 138 项结构检查；当前主分支增加 Astra 配图后通过 **140 项结构检查**。四个 Superpowers 技能通过格式校验。Guofu-improving-Agent 保留既有大写名称以兼容调用，存在新版小写命名校验例外。
 
 真实会话验收用例已提供，尚未批量实测。结构检查、模拟写回和技能格式检查均不能证明模型在所有任务中一定触发。
 
